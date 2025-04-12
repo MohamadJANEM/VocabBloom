@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VocabBloom | Automatische Lernkarten</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="app-header">
+            <h1>VocabBloom</h1>
+            <p>Automatische Lernkarten mit Sprachausgabe</p>
+        </div>
+        
+        <div class="app-content">
+            <div id="statusMessage" class="status-message">
+                Lade Vokabeln aus oxford.csv...
+            </div>
+            
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Suche nach Wörtern...">
+                <i class="fas fa-search search-icon" id="searchButton"></i>
+            </div>
+            
+            <div class="chapter-select">
+                <label for="chapter">Wähle dein Kapitel</label>
+                <select id="chapter">
+                    <option value="" disabled selected>Bitte auswählen...</option>
+                </select>
+                <div id="chapterCompletion" class="chapter-completion" style="display: none;">
+                    <span>Abgeschlossen:</span>
+                    <div class="completion-bar">
+                        <div class="completion-fill" id="completionFill"></div>
+                    </div>
+                    <span id="completionText">0%</span>
+                </div>
+            </div>
+            
+            <div class="flashcard-container">
+                <div id="flashcard" class="flashcard">
+                    <div class="card-face card-front">
+                        <div id="word" class="card-word">Bereit zum Lernen!</div>
+                        <div class="card-tag">Englisch</div>
+                        <div class="card-hint">Klicken zum Drehen</div>
+                    </div>
+                    <div class="card-face card-back">
+                        <div id="translation" class="card-word">Vokabeln werden geladen</div>
+                        <div class="card-translation">Deutsch & Arabisch</div>
+                        <div class="card-tag">Übersetzung</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="progress-text">
+                    <span>Fortschritt:</span>
+                    <span id="progress-text">0%</span>
+                </div>
+            </div>
+            
+            <div class="button-group">
+                <button id="backBtn" class="button button-secondary">
+                    <i class="fas fa-arrow-left button-icon"></i> Zurück
+                </button>
+                <button id="nextBtn" class="button button-primary">
+                    Weiter <i class="fas fa-arrow-right button-icon"></i>
+                </button>
+            </div>
+            
+            <div class="button-group">
+                <button id="knowBtn" class="button button-success">
+                    <i class="fas fa-check button-icon"></i> Gewusst!
+                </button>
+                <button id="speakBtn" class="button button-secondary">
+                    <i class="fas fa-volume-up button-icon"></i> Vorlesen
+                </button>
+            </div>
+
+            <div class="known-words-container" id="knownWordsContainer">
+                <div class="known-words-header">
+                    <span class="known-words-title">Gewusste Wörter (<span id="knownWordsCount">0</span>)</span>
+                    <button class="toggle-known-words">
+                        <i class="fas fa-chevron-down" id="knownWordsToggleIcon"></i>
+                    </button>
+                </div>
+                <div class="known-words-search">
+                    <input type="text" id="knownWordsSearchInput" placeholder="In gewussten Wörtern suchen...">
+                </div>
+                <div class="known-words-actions">
+                    <button class="bulk-action-btn">
+                        <i class="fas fa-trash"></i> Alle entfernen
+                    </button>
+                    <button class="bulk-action-btn">
+                        <i class="fas fa-download"></i> Exportieren
+                    </button>
+                </div>
+                <ul class="known-words-list" id="knownWordsList"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
