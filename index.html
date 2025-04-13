@@ -91,15 +91,14 @@
                 </div>
                 <div class="known-words-search">
                     <input type="text" id="knownWordsSearchInput" placeholder="In gewussten Wörtern suchen...">
-                </div>
-                <div class="known-words-actions">
-                    <button class="bulk-action-btn">
-                        <i class="fas fa-trash"></i> Alle entfernen
-                    </button>
-                    <button class="bulk-action-btn">
-                        <i class="fas fa-download"></i> Exportieren
-                    </button>
-                </div>
+                    <div class="known-words-actions">
+                        <button id="removeAllKnownWordsBtn" class="bulk-action-btn">
+                            <i class="fas fa-trash"></i> Alle entfernen
+                        </button>
+                        <button id="exportKnownWordsBtn" class="bulk-action-btn">
+                            <i class="fas fa-download"></i> Exportieren
+                        </button>
+                    </div>
                 <ul class="known-words-list" id="knownWordsList"></ul>
             </div>
         </div>
