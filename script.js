@@ -444,7 +444,11 @@ const app = {
         console.error('Fehler:', error);
       });
   }
-  
+
+
+
+
+
   function searchWords() {
     const searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
     
@@ -454,15 +458,41 @@ const app = {
       return;
     }
   
+    // Hier fehlt bisher die eigentliche Suche
+    const textElements = document.querySelectorAll('.text-content'); // Beispiel: alle Textelemente
+    textElements.forEach(element => {
+      if (element.textContent.toLowerCase().includes(searchTerm)) {
+        element.style.backgroundColor = 'yellow'; // Treffer markieren
+      } else {
+        element.style.backgroundColor = 'transparent'; // keine Treffer -> zurücksetzen
+      }
+    });
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
     app.searchResults = app.vocabData
-      .filter(word => (
-        (word.english && word.english.toLowerCase().includes(searchTerm)) ||
-        (word.german && word.german.toLowerCase().includes(searchTerm)) ||
-        (word.arabic && word.arabic.toLowerCase().includes(searchTerm))
-      )
-      .filter(word => !app.knownWords.some(known => 
-        known.toLowerCase() === word.english.toLowerCase())
-      ));
+    .filter(word => (
+      (word.english && word.english.toLowerCase().includes(searchTerm)) ||
+      (word.german && word.german.toLowerCase().includes(searchTerm)) ||
+      (word.arabic && word.arabic.toLowerCase().includes(searchTerm))
+    ))
+    .filter(word => !app.knownWords.some(known => 
+      known.toLowerCase() === word.english.toLowerCase()
+    ));
+  
   
     if (app.searchResults.length > 0) {
       app.searchMode = true;
