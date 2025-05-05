@@ -647,4 +647,46 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
+} 
+/* Responsive Design */
+@media (max-width: 600px) {
+    .app-header {
+        height: 160px;
+        padding: 20px;
+    }
+
+    .app-header h1 {
+        font-size: 2rem;
+    }
+
+    .app-content {
+        padding: 20px;
+        transform: translateY(-20px);
+    }
+
+    .card-word {
+        font-size: 1.8rem;
+    }
+
+    .card-translation {
+        font-size: 1.1rem;
+    }
+
+    .button {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+
+    .modal-content {
+        padding: 15px;
+    }
+
+    .modal-message {
+        font-size: 16px;
+    }
+
+    .modal-button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
 }
